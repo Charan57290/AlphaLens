@@ -51,7 +51,7 @@ const builder = new StateGraph<AgentState>({
   .addNode("news", newsAgentNode)
   .addNode("risk", riskAgentNode)
   .addNode("moat", moatAgentNode)
-  .addNode("decision", decisionAgentNode)
+  .addNode("decision_node", decisionAgentNode)
   
   .addEdge(START, "research")
   .addEdge(START, "financial")
@@ -59,13 +59,13 @@ const builder = new StateGraph<AgentState>({
   .addEdge(START, "risk")
   .addEdge(START, "moat")
   
-  .addEdge("research", "decision")
-  .addEdge("financial", "decision")
-  .addEdge("news", "decision")
-  .addEdge("risk", "decision")
-  .addEdge("moat", "decision")
+  .addEdge("research", "decision_node")
+  .addEdge("financial", "decision_node")
+  .addEdge("news", "decision_node")
+  .addEdge("risk", "decision_node")
+  .addEdge("moat", "decision_node")
   
-  .addEdge("decision", END);
+  .addEdge("decision_node", END);
 
 export const compileGraph = () => {
   return builder.compile();
