@@ -40,7 +40,32 @@ Most AI financial tools on the market simply wrap a single LLM prompt around a b
 ## 🧠 How it works — Approach and Architecture
 
 AlphaLens utilizes a multi-agent architecture powered by **LangGraph** and **Langchain**. 
-The backend orchestrates a Directed Acyclic Graph (DAG) where specialized agents run in sequence, each contributing specific analysis to a shared `AgentState`.
+The backend orchestrates a Directed Acyclic Graph (DAG) where specialized agents run in **parallel**, each contributing specific analysis to a shared `AgentState` before passing it to the final decision node.
+
+### The Agent Workflow
+
+```mermaid
+graph TD
+    A[User Input: Ticker] -->|Parallel Execution| B(Research Agent)
+    A -->|Parallel Execution| C(Financial Agent)
+    A -->|Parallel Execution| D(Risk Agent)
+    A -->|Parallel Execution| E(Moat Agent)
+    
+    B --> F{Decision Agent}
+    C --> F
+    D --> F
+    E --> F
+    
+    F --> G([Final Thesis, Recommendation & Confidence Score])
+
+    classDef agents fill:#10b981,stroke:#047857,stroke-width:2px,color:#fff;
+    classDef input fill:#111827,stroke:#374151,stroke-width:2px,color:#fff;
+    classDef output fill:#fbbf24,stroke:#b45309,stroke-width:2px,color:#000;
+    
+    class B,C,D,E,F agents;
+    class A input;
+    class G output;
+```
 
 **The Agent Pipeline:**
 1. **Research Agent**: Gathers foundational company data, industry context, and revenue streams.
@@ -80,7 +105,6 @@ The frontend is a React (Next.js) application that queries this LangGraph API ro
 
 1. **Real-Time Data Integration**: Connect the agents to the Yahoo Finance API or Polygon.io so they aren't relying on the LLM's training data cutoff.
 2. **RAG implementation**: Add a vector database to ingest real-time SEC 10-K filings and earnings call transcripts for the agents to cite.
-3. **Multi-Agent Parallelism**: Run the Financial, Risk, and Moat agents in parallel within LangGraph to reduce the total response time to under 2 seconds.
 
 ---
 
