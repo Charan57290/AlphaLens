@@ -1,19 +1,19 @@
-# AlphaLens AI - Investment Research Agent
+# 🚀 AlphaLens AI - Investment Research Agent
 
 This project was built for the AI/LLM assignment. AlphaLens AI is an institutional-grade, multi-agent investment research platform powered by Llama 3 via Groq.
 
-## Overview — What it does
+## 📖 Overview — What it does
 
 AlphaLens AI acts as a team of specialized AI financial analysts. When you provide a stock ticker (e.g., `MSFT`, `AAPL`, `TSLA`), the platform coordinates a team of 6 specialized AI agents to generate a comprehensive investment thesis. It analyzes a company's financial health, economic moat, market risks, and bullish/bearish arguments to ultimately deliver a final "BUY", "SELL", or "WATCH" verdict with an associated confidence score. The frontend features a premium, responsive glassmorphism dashboard built with Next.js and Tailwind CSS.
 
-## Why AlphaLens is Unique
+## ✨ Why AlphaLens is Unique
 
 Most AI financial tools on the market simply wrap a single LLM prompt around a block of text or offer a basic chat interface. AlphaLens AI is fundamentally different in both architecture and design:
 1. **Multi-Agent Orchestration**: We do not rely on one generalized AI. We use a LangGraph DAG architecture to coordinate 6 specialized agents (Financial, Risk, Moat, etc.) that independently analyze data and debate before synthesizing a final verdict.
 2. **Unprecedented Speed**: By leveraging Llama 3 70B on Groq's LPU architecture, AlphaLens completes a complex 6-agent sequential pipeline in under 5 seconds—a workflow that would take 30+ seconds on traditional APIs.
 3. **Institutional UX/UI**: We completely abandoned the standard "AI chatbot" interface. The frontend is a bespoke, premium glassmorphic dashboard (featuring Framer Motion micro-animations) that maps complex, structured LLM outputs directly into an instantly readable, executive-level layout.
 
-## How to run it — Setup and Run Steps
+## ⚙️ How to run it — Setup and Run Steps
 
 ### Prerequisites
 - Node.js (v18 or higher)
@@ -37,7 +37,7 @@ Most AI financial tools on the market simply wrap a single LLM prompt around a b
 5. **Access the application**:
    Open [http://localhost:3000](http://localhost:3000) in your browser. Enter a ticker in the search bar and hit enter!
 
-## How it works — Approach and Architecture
+## 🧠 How it works — Approach and Architecture
 
 AlphaLens utilizes a multi-agent architecture powered by **LangGraph** and **Langchain**. 
 The backend orchestrates a Directed Acyclic Graph (DAG) where specialized agents run in sequence, each contributing specific analysis to a shared `AgentState`.
@@ -52,7 +52,7 @@ The backend orchestrates a Directed Acyclic Graph (DAG) where specialized agents
 
 The frontend is a React (Next.js) application that queries this LangGraph API route. It features dynamic state management, Framer Motion animations, and native PDF export capabilities.
 
-## Key decisions & trade-offs
+## ⚖️ Key decisions & trade-offs
 
 - **LLM Choice (Llama 3 70B via Groq)**: 
   - *Why*: We chose Groq for its unprecedented inference speed. Financial analysis requires multiple agents running sequentially; using OpenAI/Anthropic would result in a very slow UX (30+ seconds). Groq completes the entire 6-agent pipeline in under 5 seconds.
@@ -62,7 +62,7 @@ The frontend is a React (Next.js) application that queries this LangGraph API ro
 - **RAG / Vector Databases**:
   - *Left out*: We intentionally left out a heavy Vector Database (like Pinecone) for this MVP. Hardcoding the agent prompts with structured outputs was sufficient for demonstrating the architecture without over-engineering the deployment process.
 
-## Example Runs
+## 📊 Example Runs
 
 ### MSFT (Microsoft)
 - **Verdict**: BUY (95% Confidence)
@@ -76,7 +76,7 @@ The frontend is a React (Next.js) application that queries this LangGraph API ro
 - **Bull Case**: FSD (Full Self-Driving) software margins, energy storage growth.
 - **Bear Case**: Price cuts hurting automotive gross margins, rising competition in China (BYD).
 
-## What I would improve with more time
+## 🛠️ What I would improve with more time
 
 1. **Real-Time Data Integration**: Connect the agents to the Yahoo Finance API or Polygon.io so they aren't relying on the LLM's training data cutoff.
 2. **RAG implementation**: Add a vector database to ingest real-time SEC 10-K filings and earnings call transcripts for the agents to cite.
