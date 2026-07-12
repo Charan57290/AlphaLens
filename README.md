@@ -6,6 +6,13 @@ This project was built for the AI/LLM assignment. AlphaLens AI is an institution
 
 AlphaLens AI acts as a team of specialized AI financial analysts. When you provide a stock ticker (e.g., `MSFT`, `AAPL`, `TSLA`), the platform coordinates a team of 6 specialized AI agents to generate a comprehensive investment thesis. It analyzes a company's financial health, economic moat, market risks, and bullish/bearish arguments to ultimately deliver a final "BUY", "SELL", or "WATCH" verdict with an associated confidence score. The frontend features a premium, responsive glassmorphism dashboard built with Next.js and Tailwind CSS.
 
+### Dashboard Screenshots
+
+<div align="center">
+  <img src="public/screenshot-1.png" alt="Search Hero Screen" width="800" style="border-radius: 12px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.3);"/>
+  <img src="public/screenshot-2.png" alt="Dashboard Analysis Screen" width="800" style="border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.3);"/>
+</div>
+
 ## ✨ Why AlphaLens is Unique
 
 Most AI financial tools on the market simply wrap a single LLM prompt around a block of text or offer a basic chat interface. AlphaLens AI is fundamentally different in both architecture and design:
